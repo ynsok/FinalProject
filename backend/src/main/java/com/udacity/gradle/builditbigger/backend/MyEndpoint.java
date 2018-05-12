@@ -18,23 +18,7 @@ import java.util.Random;
         )
 )
 public class MyEndpoint {
-//
-//    /** A simple endpoint method that takes a name and says Hi back */
-//    @ApiMethod(name = "sayHi")
-//    public MyBean sayHi(@Named("name") String name) {
-//        MyBean response = new MyBean();
-//
-//        int sizeOfJokes = Jokes.listOfJokes().size();
-//        Random random = new Random();
-//
-//        String getName = Jokes.listOfJokes().get(random.nextInt(sizeOfJokes));
-//        response.setData("Hi, " + name);
-//
-//        return response;
-//    }
-
-    /** A simple endpoint method that takes a name and says Hi back */
-    @ApiMethod(name = "sayHi")
+    @ApiMethod(name = "getJoke")
     public MyBean sayHi() {
         MyBean response = new MyBean();
 

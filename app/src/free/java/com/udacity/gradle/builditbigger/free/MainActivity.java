@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger.free;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -8,15 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.android.jokeactivity.JokeActivity;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
-import com.udacity.gradle.builditbigger.EndpoinsAsyncTaskFree;
+import com.udacity.gradle.builditbigger.EndpoinsAsyncTask;
 import com.udacity.gradle.builditbigger.R;
 
 public class MainActivity extends AppCompatActivity {
-    public static Intent intent;
     private InterstitialAd mInterstitialAd;
 
     @Override
@@ -56,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        new EndpoinsAsyncTaskFree().execute(this);
+        new EndpoinsAsyncTask().execute(this);
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         } else {
             Log.d("TAG", "The interstitial wasn't loaded yet.");
         }
 
-        intent = new Intent(this, JokeActivity.class);
+
 
 
     }

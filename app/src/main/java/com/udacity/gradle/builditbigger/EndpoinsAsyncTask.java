@@ -1,6 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import com.example.android.jokeactivity.JokeActivity;
@@ -12,7 +14,8 @@ import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
 
-class EndpoinsAsyncTask extends AsyncTask<Context,Void,String> {
+@SuppressLint("StaticFieldLeak")
+public class EndpoinsAsyncTask extends AsyncTask<Context,Void,String> {
     private static MyApi myApi =null;
     private Context context;
 
@@ -34,7 +37,8 @@ class EndpoinsAsyncTask extends AsyncTask<Context,Void,String> {
         context = contexts[0];
 
         try {
-            return myApi.sayHi().execute().getData();
+            return myApi.getJoke().execute().getData();
+
         } catch (IOException e) {
             return e.getMessage();
         }
@@ -42,8 +46,9 @@ class EndpoinsAsyncTask extends AsyncTask<Context,Void,String> {
 
     @Override
     protected void onPostExecute(String s) {
-        MainActivity.intent.putExtra(JokeActivity.JOKE_EXTRA,s);
-        context.startActivity(MainActivity.intent);
+        Intent intent =  new Intent(context,JokeActivity.class);
+        intent.putExtra(JokeActivity.JOKE_EXTRA,s);
+        context.startActivity(intent);
 
 
     }
